@@ -23,7 +23,13 @@ initializeSocket(io);
 
 server.listen(config.port, () => {
   logger.info(`EMS Server running on port ${config.port} [${config.env}]`);
-  logger.info(`Swagger docs: http://localhost:${config.port}/api-docs`);
+
+  const swaggerUrl =
+    process.env.NODE_ENV === 'production'
+      ? `${process.env.RENDER_EXTERNAL_URL}/api-docs`
+      : `http://localhost:${config.port}/api-docs`;
+
+  logger.info(`Swagger docs: ${swaggerUrl}`);
 });
 
 process.on('unhandledRejection', (err) => {
