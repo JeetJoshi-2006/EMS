@@ -40,7 +40,12 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
 app.get('/health', (_req, res) => {
   res.json({ success: true, message: 'Employee Management System API is running', timestamp: new Date().toISOString() });
 });
-
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Employee Management System Backend Running",
+  });
+});
 app.use('/api/v1', apiLimiter, routes);
 
 app.use(notFound);
