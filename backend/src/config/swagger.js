@@ -11,8 +11,11 @@ const options = {
       contact: { name: 'EMS Support', email: 'support@ems.com' },
     },
     servers: [
-      { url: `http://localhost:${config.port}`, description: 'Development' },
-    ],
+  {
+    url: '/',
+    description: 'Current Server',
+  },
+],
     components: {
       securitySchemes: {
         bearerAuth: {
